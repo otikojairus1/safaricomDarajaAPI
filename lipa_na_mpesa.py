@@ -1,5 +1,5 @@
 import requests
-import keys
+import key
 import datetime
 import base64
 from requests.auth import HTTPBasicAuth
@@ -17,9 +17,6 @@ decoded_password = encode_password.decode()
 
 #getting access tokens
 
- 
-  
-
 consumer_key = "Netim85fhoDMevXP4GjGVZ5YjDpIgbx7"
 consumer_secret = "bUyeUr96Jnn6TunM"
 api_URL = "https://sandbox.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials"
@@ -30,7 +27,7 @@ responce = r.json()
 myaccesstoken = responce['access_token']
   
 
-#pushin stk
+#pushin stk. Check your phone and enter the mpesa pin prompted
 access_token = myaccesstoken
 api_url = "https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest"
 headers = { "Authorization": "Bearer %s" % access_token }
@@ -51,4 +48,5 @@ request = {
 response = requests.post(api_url, json = request, headers=headers)
 
 print (response.text)
-  
+
+#check your app for response from SAFARICOM and extract customers details
